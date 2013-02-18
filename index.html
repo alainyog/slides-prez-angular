@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>AngularJS</title>
+
+		<meta name="description" content="Présentation AngularJS par Thierry LAU">
+		<meta name="author" content="Thierry LAU">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+        <link rel="stylesheet" href="css/angular.css">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+                <section>
+                    <section>
+                        <img src="img/angularjs.png" height="300px" alt="AngularJS">
+                        <h3>Transcendez vos développements Web avec AngularJS</h3>
+                        <p>
+                            <small>presenté par <a href="http://gplus.to/lauthierry">LAU Thierry</a> / <a href="https://twitter.com/laut3rry">@laut3rry</a></small>
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2>Thierry LAU</h2>
+                        <ul>
+                            <li>Développeur Front-End chez <span class="orange">[</span>sf<span class="orange">☰</span>ir<span class="orange">]</span></li>
+                            <li>passionné des technologies du Web</li>
+                            <li>Anime la page Google+ <a href="https://plus.google.com/101291710590780094468/posts">HTML5 * CSS3 - ʕ๏๏ʔ</a></li>
+                            <li>Anime la communauté Google+ <a href="http://gplus.to/html5css3fr">HTML5 * CSS3 [FR]</a></li>
+                            <li>et bien sûr fan d'AngularJS</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Framework Javascript</h2>
+                        <h3>par Google</h3>
+                        <p>pour développer des applications Web</p>
+                    </section>
+
+                    <section>
+                        <h2>Framework Javascript</h2>
+                        <ul>
+                            <li>Séparation des couches (MV*)</li>
+                            <li>Navigation</li>
+                            <li>Templating</li>
+                            <li>Meilleure organisation du code Javascript</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Déroulement</h2>
+                        <ul>
+                            <li>Présentation</li>
+                            <li>Live coding d'une librairie de films en ligne</li>
+                            <li>Exercices</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Récupérer le code</h2>
+                        <a href="https://github.com/lauterry/angularmovie">git clone git@github.com:lauterry/angularmovie.git</a>
+                        <p>git checkout -f step-0</p>
+                    </section>
+                </section>
+
+                <section>
+                    <img src="img/misko.jpg" alt="Misko Hevery">
+                    <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
+                        AngularJS est ce que le navigateur Web aurait du être s'il avait été conçu pour des applications Web
+                    </blockquote>
+                    <small class="pull-right">Misko Hevery, créateur d'AngularJS</small>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h2>Hello World HTML</h2>
+                        <pre><code class="html" contenteditable>
+                         &lt;p&gt;Hello World&lt;/p&gt;
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Hello World avec Javascript</h2>
+                        <pre><code class="html" contenteditable>
+&lt;html&gt;
+    &lt;div id="myDiv"&gt;&lt;/div&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <pre><code class="javascript" contenteditable>
+window.onload = function(){
+    var div = document.getElementById('myDiv');
+    var txt = 'Hello World';
+
+    if (div.textContent) {
+        div.textContent = txt;
+    } else if(div.innerText) { // IE
+        div.innerText = txt;
+    }
+};
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Hello World avec jQuery</h2>
+                        <pre><code class="html" contenteditable>
+&lt;html&gt;
+    &lt;div id="myDiv"&gt;&lt;/div&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <pre><code class="javascript" contenteditable>
+$(document).ready(function() {
+    var txt = 'Hello World';
+    $('#myDiv').text(txt);
+});
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Hello World AngularJS</h2>
+                        <pre><code class="html" contenteditable>
+&lt;html ng-app&gt;
+    &lt;div ng-controller="myController"&gt;{{greeting}}&lt;/div&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <pre><code class="javascript" contenteditable>
+function myController($scope){
+    $scope.greeting = 'Hello World';
+}
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h3>Top feature n°1 : Data-binding bi-directionnel</h3>
+                    <pre><code class="html" contenteditable>
+&lt;html ng-app&gt;
+    &lt;div ng-controller="myController"&gt;{{greeting}}&lt;/div&gt;
+&lt;/html&gt;
+                    </code></pre>
+                    <pre><code class="javascript" contenteditable>
+function myController($scope){
+    $scope.greeting = 'Hello World';
+}
+                    </code></pre>
+                    <p class="fragment"><code>$scope</code> est la seule source de vérité</p>
+                    <p class="fragment">La vue et le modèle sont synchronisés</p>
+                    <p class="fragment">Elimination de 60 à 80% du code de manipulation du DOM</p>
+                </section>
+
+                <section>
+                    <h3>Top feature n°2 : Template</h3>
+                    <pre><code class="html" contenteditable>
+&lt;html ng-app&gt;
+    &lt;div ng-controller="myController"&gt;{{greeting}}&lt;/div&gt;
+&lt;/html&gt;
+                    </code></pre>
+                    <pre><code class="javascript" contenteditable>
+function myController($scope){
+    $scope.greeting = 'Hello World';
+}
+                    </code></pre>
+                    <p class="fragment">Pas de manipulation de string, ni de innerHTML</p>
+                    <p class="fragment">Transformation du DOM grâce au compilateur AngularJS</p>
+                    <p class="fragment">Extension de HTML via les directives</p>
+                </section>
+
+                <section>
+                    <h3>Top feature n°3 : MVC</h3>
+                    <pre><code class="html" contenteditable>
+&lt;html ng-app&gt;
+    &lt;div ng-controller="myController"&gt;{{greeting}}&lt;/div&gt;
+&lt;/html&gt;
+                    </code></pre>
+                    <pre><code class="javascript" contenteditable>
+function myController($scope){
+    $scope.greeting = 'Hello World';
+}
+                    </code></pre>
+                    <p class="fragment">modèle = simple object javascript</p>
+                    <p class="fragment">vue = HTML</p>
+                    <p class="fragment">contrôleur = simple fonction javascript</p>
+                </section>
+
+                <section>
+                    <h2>Gestion des évènements de clic</h2>
+                    <p>Utilisation de la directive <code>ng-click</code></p>
+                    <pre><code class="html" contenteditable>
+&lt;div ng-controller="myController"&gt;
+    &lt;button ng-click="callAction()"&gt;&lt;/button&gt;
+&lt;/div&gt;
+                    </code></pre>
+                    <pre><code class="javascript" contenteditable>
+function myController($scope){
+    $scope.callAction = function(){
+        /* do something */
+    };
+}
+                    </code></pre>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Hiérarchie des <code>$scope</code></h2>
+                        <ul>
+                            <li class="fragment">Une application contient un seul scope global appelé <code>$rootScope</code></li>
+                            <li class="fragment">mais plusieurs <code>$scope</code> enfants</li>
+                            <li class="fragment">Un scope créé est toujours enfant d'un scope parent ...</li>
+                            <li class="fragment">... et hérite des propriétés de ce dernier</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Propagation des évènements <code>$scope</code></h2>
+                        <p class="fragment">Un évènement peut être "diffusé" aux <code>$scope</code> enfants ...</p>
+                        <pre class="fragment"><code class="javascript" contenteditable>
+$scope.$broadcast('myEvent', param1, param2, ...);
+                        </code></pre>
+                        <p class="fragment">... ou "émis" aux <code>$scope</code> parents</p>
+                        <pre class="fragment"><code class="javascript" contenteditable>
+$scope.$emit('anotherEvent', param1, param2, ...);
+                        </code></pre>
+                        <pre class="fragment"><code class="javascript" contenteditable>
+$scope.$on('yetAnotherEvent', function(event, param1, param2, ...){
+      console.log(param1);
+});
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Récapitulatifs</h2>
+                    <ul>
+                        <li>Initialisation avec <code>ng-app</code></li>
+                        <li>Controller</li>
+                        <li>Template HTML</li>
+                        <li>Modèle lié <code>$scope</code></li>
+                        <li>Evènement clic avec <code>ng-click</code></li>
+                        <li>XHR avec le service <code>$http</code></li>
+                        <li>Navigation</li>
+                    </ul>
+                </section>
+
+                <section>
+
+                    <section>
+                        <h2>Top feature n°4 : Services & Injection de dépendances</h2>
+                        <p class="fragment">Singleton qui fournit des tâches spécifiques à l'application</p>
+                        <p class="fragment">Exemple : $scope, $http</p>
+
+                    </section>
+
+                    <section>
+                        <h2>Créer ses propres services</h2>
+                        <pre><code class="javascript" contenteditable>
+myModuleApp.service("MonService", function ($http, dep1, dep2, ...) {
+    /* utilisation de $http */
+});
+                        </code></pre>
+
+                        <pre class="fragment"><code class="javascript" contenteditable>
+function myController($scope, MonService){
+    MonService.faireUnTruc();
+};
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Avantages</h2>
+                        <ul>
+                            <li>Modularisation, encapsulation</li>
+                            <li>Meilleur testabilité</li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Top feature n° 5 : Filtres AngularJS</h2>
+                        <p>Formate les données avant de les afficher</p>
+                    </section>
+                    <section>
+                        <h2>Exemples</h2>
+                        <pre><code class="javascript" contenteditable>
+$scope.amount = 1234.56;
+                        </code></pre>
+                        <pre><code class="html" contenteditable>
+&lt;div&gt;{{amount | currency}}&lt;/div&gt;        &lt;!-- $1,234.56 --&gt;
+&lt;div&gt;{{amount | currency:"USD$"}}&lt;/div&gt; &lt;!-- USD$1,234.56 --&gt;
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>D'autres filtres</h2>
+                        <ul>
+                            <li>date</li>
+                            <li>lowercase</li>
+                            <li>uppercase</li>
+                            <li>limitTo</li>
+                            <li class="fragment grow">filter</li>
+                            <li class="fragment grow">orderBy</li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h2>Créer ses propres filtres</h2>
+                        <pre><code class="javascript" contenteditable>
+angularMovieApp.filter('greet', function () {
+    return function(inputValue, arg1, arg2, ....) {
+         return 'Hello ' + inputvalue;
+    };
+});
+                        </code></pre>
+                        <pre><code class="html" contenteditable>
+&lt;div&gt;{{name || greet}}&lt;/div&gt;
+&lt;div&gt;{{name || greet:arg1:arg2}}&lt;/div&gt;
+                        </code></pre>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h2>Top feature n°6 : Directives</h2>
+                        <p>Etendre le langage HTML</p>
+                        <p>Créer des composants réutilisables</p>
+                    </section>
+
+                    <section>
+                        <h2>Exemples</h2>
+                        <ul>
+                            <li>ng-model</li>
+                            <li>ng-repeat</li>
+                            <li>ng-click</li>
+                            <li>ng-show</li>
+                            <li>ng-switch</li>
+                        </ul>
+                    </section>
+                </section>
+
+
+                <section>
+                    <h2>Outils autour d'AngularJS</h2>
+                    <ul>
+                        <li class="fragment"><a
+                                href="https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk">Batarang</a>, une extension Chrome</li>
+                        <li class="fragment"><a href="http://yeoman.io/">Yeoman</a>, le process du développeur Web moderne</li>
+                        <li class="fragment"><a href="http://vojtajina.github.com/testacular/">Testacular</a>, un lanceur de tests spectaculaire</li>
+                        <li class="fragment"><a href="http://plugins.jetbrains.com/plugin?pr=&pluginId=6971">Plugin Intellij / webstorm</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Pourquoi AngularJS ?</h2>
+                    <ul>
+                        <li class="fragment">Beaucoup moins de code à écrire grâce au data-binding bi-directionnel</li>
+                        <li class="fragment">Modularisation du code avec les modules et les services injectables : Pas de pollution de
+                            l'espace global
+                        </li>
+                        <li class="fragment">AngularJS peut être actif sur une portion de ta page HTML</li>
+                        <li class="fragment">Créer ses propres composants réutilisable grâce aux directives</li>
+                        <li class="fragment">Développement guidée</li>
+                        <li class="fragment">Framework qui promouvoit les tests unitaires</li>
+                        <li class="fragment">API bien documentée</li>
+                        <li class="fragment"><a href="http://docs.angularjs.org/tutorial">Excellent tutorial pour débuter</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Difficultés</h2>
+                    <ul>
+                        <li>Ecriture des directives compliquée si on ne maîtrise pas le processus de compilation AngularJS</li>
+                        <li>Le data-binding bi-directionnel n'est pas automatique dans un univers non angularJS</li>
+                    </ul>
+                </section>
+
+				<section>
+					<h3>Merci de votre attention !</h3>
+					<p>twitter : <a href="https://twitter.com/laut3rry">@laut3rry</a></p>
+                    <p>google + : <a href="http://gplus.to/lauthierry">http://gplus.to/lauthierry</a></p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/showdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
