@@ -46,16 +46,26 @@
                             <small>presenté par <a href="http://gplus.to/lauthierry">LAU Thierry</a> / <a href="https://twitter.com/laut3rry">@laut3rry</a></small>
                         </p>
                     </section>
-
                     <section>
-                        <h2>Thierry LAU</h2>
-                        <ul>
-                            <li>Développeur Front-End chez <span class="orange">[</span>sf<span class="orange">Ξ</span>ir<span class="orange">]</span></li>
-                            <li>passionné des technologies du Web</li>
-                            <li>Anime la page Google+ <a href="https://plus.google.com/101291710590780094468/posts">HTML5 * CSS3 - ʕ๏๏ʔ</a></li>
-                            <li>Anime la communauté Google+ <a href="http://gplus.to/html5css3fr">HTML5 * CSS3 [FR]</a></li>
-                            <li>et bien sûr fan d'AngularJS</li>
-                        </ul>
+                        <h2>Développeur Front-End chez <span class="orange">[</span>sf<span class="orange">Ξ</span>ir<span class="orange">]</span></h2>
+                        <a href="http://www.sfeir.com"><img src="img/sfeir.png" alt=""></a>
+                    </section>
+                    <section>
+                        <h2>Anime la page HTML5 * CSS3 - ʕ๏๏ʔ</h2>
+                        <figure>
+                            <a href="https://plus.google.com/101291710590780094468/posts"><img src="img/page_google_plus.png" alt=""></a>
+                        </figure>
+                    </section>
+                    <section>
+                        <h2>et la communauté HTML5 * CSS3 [FR]</h2>
+                        <figure>
+                            <a href="http://gplus.to/html5css3fr"><img src="img/communaute_google_plus.png" alt=""></a>
+                        </figure>
+                    </section>
+                    <section id="fan">
+                        <h1>F</h1>
+                        <img src="img/angularjs.png" height="300px" alt="A">
+                        <h1>N</h1>
                     </section>
                 </section>
 
@@ -63,14 +73,14 @@
                     <section>
                         <h2>Framework Javascript</h2>
                         <h3>par Google</h3>
-                        <p>pour développer des applications Web</p>
+                        <p>pour développer des applications Web modernes</p>
                     </section>
 
                     <section>
                         <h2>Framework Javascript</h2>
                         <ul>
                             <li>Séparation des couches (MV*)</li>
-                            <li>Navigation</li>
+                            <li>Navigation coté client</li>
                             <li>Templating</li>
                             <li>Meilleure organisation du code Javascript</li>
                         </ul>
@@ -81,20 +91,14 @@
                     <section>
                         <h2>Déroulement</h2>
                         <ul>
-                            <li>Présentation</li>
+                            <li>Parcourir les fonctionnalités clés d'AngularJS</li>
                             <li>Live coding d'une librairie de films en ligne</li>
-                            <li>Exercices</li>
                         </ul>
-                    </section>
-                    <section>
-                        <h2>Récupérer le code</h2>
-                        <a href="https://github.com/lauterry/angularmovie">git clone git@github.com:lauterry/angularmovie.git</a>
-                        <p>git checkout -f step-0</p>
                     </section>
                 </section>
 
                 <section>
-                    <img src="img/misko.jpg" alt="Misko Hevery">
+                    <img src="img/misko.jpg" height="200px" alt="Misko Hevery">
                     <blockquote cite="http://searchservervirtualization.techtarget.com/definition/Our-Favorite-Technology-Quotations">
                         AngularJS est ce que le navigateur Web aurait du être s'il avait été conçu pour des applications Web
                     </blockquote>
@@ -213,6 +217,10 @@ function myController($scope){
                 </section>
 
                 <section>
+                    <h1>DEMO</h1>
+                </section>
+
+                <section>
                     <h2>Gestion des évènements de clic</h2>
                     <p>Utilisation de la directive <code>ng-click</code></p>
                     <pre><code class="html" contenteditable>
@@ -230,6 +238,10 @@ function myController($scope){
                 </section>
 
                 <section>
+                    <h1>DEMO</h1>
+                </section>
+
+                <section>
                     <section>
                         <h2>Hiérarchie des <code>$scope</code></h2>
                         <ul>
@@ -238,6 +250,10 @@ function myController($scope){
                             <li class="fragment">Un scope créé est toujours enfant d'un scope parent ...</li>
                             <li class="fragment">... et hérite des propriétés de ce dernier</li>
                         </ul>
+                    </section>
+
+                    <section>
+                        <h1>DEMO</h1>
                     </section>
 
                     <section>
@@ -259,20 +275,96 @@ $scope.$on('yetAnotherEvent', function(event, param1, param2, ...){
                 </section>
 
                 <section>
+                    <section>
+                        <h2>XHR & Injection de dépendances</h2>
+                        <p>Pour effectuer des appels XHR, angular dispose du service <code>$http</code> ...</p>
+                        <p>... injectable au même titre que le service <code>$scope</code></p>
+                        <pre><code class="javascript" contenteditable>
+function myController($scope, $http){
+
+};
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <p>Usages</p>
+                        <pre><code class="javascript" contenteditable>
+$http.get(url, options)
+                        </code></pre>
+                        <pre><code class="javascript" contenteditable>
+$http.post(url, data, options)
+                        </code></pre>
+                        <pre><code class="javascript" contenteditable>
+$http.put(url, data, options)
+                        </code></pre>
+                        <pre><code class="javascript" contenteditable>
+$http.delete(url, options)
+                        </code></pre>
+                    </section>
+
+
+                    <section>
+                        <p>Callbacks</p>
+                        <pre><code class="javascript" contenteditable>
+$http.get(url, options)
+.success(function(data, status, headers, config){
+    /* do something */
+})
+.error(function(data, status, headers, config){
+    /* handle error */
+});
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h1>DEMO</h1>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Navigation côté client</h2>
+                    </section>
+                    <section>
+                        <h2>Service <code>$routeProvider</code></h2>
+                        <p>Permet de configurer le template HTML à charger avec son contrôleur associé pour une URL donné</p>
+                    <pre><code class="javascript" contenteditable>
+$routeProvider
+    .when('/route1', {
+        templateUrl: 'path/to/view1.html',
+        controller : 'view1Controller'
+    })
+    .when('/route2', {
+        templateUrl: 'path/to/view2.html',
+        controller : 'view2Controller'
+    })
+    .otherwise({
+        redirectTo: '/route1'
+    });
+                    </code></pre>
+
+                    </section>
+               </section>
+
+                <section>
+                    <h1>DEMO</h1>
+                </section>
+
+                <section>
                     <h2>Récapitulatifs</h2>
                     <ul>
                         <li>Initialisation avec <code>ng-app</code></li>
                         <li>Controller</li>
-                        <li>Template HTML</li>
                         <li>Modèle lié <code>$scope</code></li>
+                        <li>Template HTML</li>
                         <li>Evènement clic avec <code>ng-click</code></li>
                         <li>XHR avec le service <code>$http</code></li>
-                        <li>Navigation</li>
+                        <li>Navigation côté client</li>
                     </ul>
                 </section>
 
-                <section>
 
+                <section>
                     <section>
                         <h2>Top feature n°4 : Services & Injection de dépendances</h2>
                         <p class="fragment">Singleton qui fournit des tâches spécifiques à l'application</p>
@@ -305,6 +397,10 @@ function myController($scope, MonService){
                 </section>
 
                 <section>
+                    <h1>DEMO</h1>
+                </section>
+
+                <section>
                     <section>
                         <h2>Top feature n° 5 : Filtres AngularJS</h2>
                         <p>Formate les données avant de les afficher</p>
@@ -330,6 +426,11 @@ $scope.amount = 1234.56;
                             <li class="fragment grow">orderBy</li>
                         </ul>
                     </section>
+
+                    <section>
+                        <h1>DEMO</h1>
+                    </section>
+
                     <section>
                         <h2>Créer ses propres filtres</h2>
                         <pre><code class="javascript" contenteditable>
@@ -344,8 +445,11 @@ angularMovieApp.filter('greet', function () {
 &lt;div&gt;{{name || greet:arg1:arg2}}&lt;/div&gt;
                         </code></pre>
                     </section>
-                </section>
 
+                    <section>
+                        <h1>DEMO</h1>
+                    </section>
+                </section>
 
                 <section>
                     <section>
@@ -364,42 +468,107 @@ angularMovieApp.filter('greet', function () {
                             <li>ng-switch</li>
                         </ul>
                     </section>
-                </section>
 
+                    <section>
+                        <h1>DEMO</h1>
+                    </section>
 
-                <section>
-                    <h2>Outils autour d'AngularJS</h2>
-                    <ul>
-                        <li class="fragment"><a
-                                href="https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk">Batarang</a>, une extension Chrome</li>
-                        <li class="fragment"><a href="http://yeoman.io/">Yeoman</a>, le process du développeur Web moderne</li>
-                        <li class="fragment"><a href="http://vojtajina.github.com/testacular/">Testacular</a>, un lanceur de tests spectaculaire</li>
-                        <li class="fragment"><a href="http://plugins.jetbrains.com/plugin?pr=&pluginId=6971">Plugin Intellij / webstorm</a></li>
-                    </ul>
                 </section>
 
                 <section>
-                    <h2>Pourquoi AngularJS ?</h2>
-                    <ul>
-                        <li class="fragment">Beaucoup moins de code à écrire grâce au data-binding bi-directionnel</li>
-                        <li class="fragment">Modularisation du code avec les modules et les services injectables : Pas de pollution de
-                            l'espace global
-                        </li>
-                        <li class="fragment">AngularJS peut être actif sur une portion de ta page HTML</li>
-                        <li class="fragment">Créer ses propres composants réutilisable grâce aux directives</li>
-                        <li class="fragment">Développement guidée</li>
-                        <li class="fragment">Framework qui promouvoit les tests unitaires</li>
-                        <li class="fragment">API bien documentée</li>
-                        <li class="fragment"><a href="http://docs.angularjs.org/tutorial">Excellent tutorial pour débuter</a></li>
-                    </ul>
+                    <section>
+                        <h2>Outils autour d'AngularJS</h2>
+                    </section>
+
+                    <section>
+                        <h2>Batarang</h2>
+                        <a href="https://chrome.google.com/webstore/detail/angularjs-batarang/ighdmehidhipcmcojjgiloacoafjmpfk"><img src="img/batarang.png" alt=""></a>
+                    </section>
+
+                    <section>
+                        <h2>Yeoman</h2>
+                        <a href="http://yeoman.io/"><img src="img/yeoman.png" alt=""></a>
+                    </section>
+
+                    <section>
+                        <h2>Karma (Testacular)</h2>
+                        <a href="http://karma-runner.github.com/0.8/index.html"><img src="img/karma.png" alt=""></a>
+                    </section>
+
+                    <section>
+                        <h2>Plugin Intellij / webstorm</h2>
+                        <a href="http://plugins.jetbrains.com/plugin?pr=&pluginId=6971"><img src="img/pluginidea.png" alt=""></a>
+                    </section>
+
+                    <section>
+                        <h2>AngularUI</h2>
+                        <a href="http://angular-ui.github.com/"><img src="img/angularui.png" alt=""></a>
+                    </section>
+
+                    <section>
+                        <h2>AngularStrap</h2>
+                        <a href="http://mgcrea.github.com/angular-strap/"><img src="img/angularstrap.png" alt=""></a>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>Difficultés</h2>
-                    <ul>
-                        <li>Ecriture des directives compliquée si on ne maîtrise pas le processus de compilation AngularJS</li>
-                        <li>Le data-binding bi-directionnel n'est pas automatique dans un univers non angularJS</li>
-                    </ul>
+                    <section>
+                        <h2>Ressources</h2>
+                        <ul>
+                            <li class="fragment"><a href="http://docs.angularjs.org/tutorial">Tutorial Officiel</a></li>
+                            <li class="fragment"><a href="http://www.youtube.com/user/angularjs">Chaîne Youtube AngularJS Officiel</a></li>
+                            <li class="fragment"><a href="http://www.yearofmoo.com/tags/AngularJS.html">Year Of Moo</a></li>
+                            <li class="fragment"><a href="http://www.frangular.com/">AngularFR</a> , par Thierry Chatel</li>
+                            <li class="fragment"><a href="http://www.itaware.eu/tag/angularjs/">I.T Aware</a> , par Sébastien Letélié</li>
+                            <li class="fragment"><a href="http://egghead.io/">egghead.io</a> Plein de vidéos réalisées par John Lindquist</li>
+                            <li class="fragment"><a href="https://plus.google.com/communities/109984348857296908402?hl=fr">Communauté Google+ française AngularJS</a></li>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Pourquoi AngularJS ?</h2>
+                        <ul>
+                            <li class="fragment">Beaucoup moins de code à écrire grâce au data-binding bi-directionnel</li>
+                            <li class="fragment">Modularisation du code avec les modules et les services injectables : Pas de pollution de
+                                l'espace global
+                            </li>
+                            <li class="fragment">AngularJS peut être actif sur une portion de ta page HTML</li>
+                            <li class="fragment">Créer ses propres composants réutilisable grâce aux directives</li>
+                            <li class="fragment">Développement guidée</li>
+                            <li class="fragment">Framework qui promeut les tests unitaires</li>
+                            <li class="fragment">API bien documentée pour certains aspects</li>
+                            <li class="fragment"><a href="http://docs.angularjs.org/tutorial">Excellent tutorial pour débuter</a></li>
+                            <li class="fragment">Ticket d'entrée pas cher</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>Difficultés</h2>
+                        <ul>
+                            <li class="fragment">Documentation officielle pauvre sur certaines notions</li>
+                            <li class="fragment">Ecriture des directives pouvant être compliquée si on ne maîtrise pas son cycle de vie</li>
+                            <ul class="fragment">
+                                <li>Compilation</li>
+                                <li>Link</li>
+                                <li>Transclusion</li>
+                                <li>Restriction</li>
+                            </ul>
+                            <li class="fragment">Le data-binding bi-directionnel n'est pas automatique dans un univers non angularJS</li>
+                            <li class="fragment">Intégration librairies UI jQuery pouvant être problématique</li>
+                            <ul class="fragment">
+                                <li>Je la wrappe dans une directive ?</li>
+                                <li>... ou je crée une directive ?</li>
+                            </ul>
+                        </ul>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Code & Slides</h2>
+                    <p>Code : <a href="https://github.com/lauterry/angularmovie">https://github.com/lauterry/angularmovie</a></p>
+                    <p>Slides : <a href="https://github.com/lauterry/slides-prez-angular">https://github.com/lauterry/slides-prez-angular</a></p>
                 </section>
 
 				<section>
