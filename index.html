@@ -555,7 +555,9 @@ angularMovieApp.filter('greet', function () {
                                 <li>Transclusion</li>
                                 <li>Restriction</li>
                             </ul>
-                            <li class="fragment">Le data-binding bi-directionnel n'est pas automatique dans un univers non angularJS</li>
+                            <li class="fragment">Le data-binding bi-directionnel ne fonctionne pas hors du "monde" AngularJS. Il faut utiliser
+                                <code>$scope.$watch()</code> et <code>$scope.$apply()</code> pour surveiller et mettre à jour manuellement une valeur
+                            </li>
                             <li class="fragment">Intégration librairies UI jQuery pouvant être problématique</li>
                             <ul class="fragment">
                                 <li>Je la wrappe dans une directive ?</li>
