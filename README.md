@@ -1,5 +1,5 @@
 # Slides de la présentation "Transcendez vos développements Web avec AngularJS"
-réalisé avec le framework de présentation [reveal.js](http://lab.hakim.se/reveal-js/)
+réalisée avec le framework de présentation [reveal.js](http://lab.hakim.se/reveal-js/)
 
 [Démarrer la présentation](http://lauterry.github.com/slides-prez-angular/#/)
 
@@ -12,3 +12,5 @@ Un live coding d'une application de bibliothèque de films en ligne accompagne c
 
 ## Historique des présentations
 * 15/02/2013 - BOF de SFEIR
+* 18/04/2013 - Google Developer Group Paris
+
