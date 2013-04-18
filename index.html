@@ -29,6 +29,8 @@
 		<!--[if lt IE 9]>
 		<script src="lib/js/html5shiv.js"></script>
 		<![endif]-->
+
+        <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
 	</head>
 
 	<body>
@@ -115,46 +117,104 @@
                     </section>
 
                     <section>
+                        <p><input style="height:35px; font-size:20px" id="jsInput" type="text"/></p>
+                        <p><div id="jsDiv"></div></p>
+
+                        <script type="text/javascript">
+                            var div = document.getElementById('jsDiv');
+                            var input = document.getElementById('jsInput');
+                            var txt = 'Hello World';
+
+                            input.value = txt;
+                            if (div.textContent || div.textContent === "") {
+                                div.textContent = txt;
+                            } else if(div.innerText || div.innerText === "") { // IE
+                                div.innerText = txt;
+                            }
+
+                            input.onkeyup = function(){
+                                if (div.textContent || div.textContent === "") {
+                                    div.textContent = input.value;
+                                } else if(div.innerText || div.innerText === "") { // IE
+                                    div.innerText = input.value;
+                                }
+                            };
+                        </script>
+                    </section>
+
+                    <section>
                         <h2>Hello World avec Javascript</h2>
                         <pre><code class="html" contenteditable>
 &lt;html&gt;
+    &lt;input type="text"/&gt;
     &lt;div id="myDiv"&gt;&lt;/div&gt;
 &lt;/html&gt;
                         </code></pre>
-                        <pre><code class="javascript" contenteditable>
+                        <pre><code class="javascript">
 window.onload = function(){
     var div = document.getElementById('myDiv');
+    var input = document.getElementsByTagName('input')[0];
     var txt = 'Hello World';
 
-    if (div.textContent) {
+    input.value = txt;
+    if (div.textContent || div.textContent === "") {
         div.textContent = txt;
-    } else if(div.innerText) { // IE
+    } else if(div.innerText || div.innerText === "") { // IE
         div.innerText = txt;
     }
+
+    input.onkeyup = function(){
+        if (div.textContent || div.textContent === "") {
+            div.textContent = input.value;
+        } else if(div.innerText || div.innerText === "") { // IE
+            div.innerText = input.value;
+        }
+    };
 };
                         </code></pre>
+
                     </section>
 
                     <section>
                         <h2>Hello World avec jQuery</h2>
                         <pre><code class="html" contenteditable>
 &lt;html&gt;
+    &lt;input type="text"/&gt;
     &lt;div id="myDiv"&gt;&lt;/div&gt;
 &lt;/html&gt;
                         </code></pre>
                         <pre><code class="javascript" contenteditable>
 $(document).ready(function() {
     var txt = 'Hello World';
-    $('#myDiv').text(txt);
+    var $input = $('input');
+    var $div = $('#myDiv');
+    $input.val(txt);
+    $div.text(txt);
+    $input.keyup(function (event) {
+        $div.text(event.target.value);
+    });
 });
                         </code></pre>
+                        <p><input style="height:35px; font-size:20px" id="jQueryInput" type="text"/></p>
+                        <p><div id="myDiv"></div></p>
+                        <script type="text/javascript">
+                            var txt = 'Hello World';
+                            var $input = $('#jQueryInput');
+                            var $div = $('#myDiv');
+                            $input.val(txt);
+                            $div.text(txt);
+                            $input.keyup(function (event) {
+                                $div.text(event.target.value);
+                            });
+                        </script>
                     </section>
 
                     <section>
                         <h2>Hello World AngularJS</h2>
                         <pre><code class="html" contenteditable>
-&lt;html ng-app&gt;
-    &lt;div ng-controller="myController"&gt;{{greeting}}&lt;/div&gt;
+&lt;html ng-app ng-controller="myController"&gt;
+    &lt;input ng-model="greeting"/&gt;
+    &lt;div &gt;{{greeting}}&lt;/div&gt;
 &lt;/html&gt;
                         </code></pre>
                         <pre><code class="javascript" contenteditable>
@@ -162,6 +222,12 @@ function myController($scope){
     $scope.greeting = 'Hello World';
 }
                         </code></pre>
+                        <div ng-app="angularRevealApp" ng-controller="greetingController">
+                            <p>
+                                <input style="height:35px; font-size:20px" type="text" ng-model="greeting">
+                            </p>
+                            <p>{{greeting}}</p>
+                        </div>
                     </section>
                 </section>
 
@@ -217,10 +283,6 @@ function myController($scope){
                 </section>
 
                 <section>
-                    <h1>DEMO</h1>
-                </section>
-
-                <section>
                     <h2>Gestion des évènements de clic</h2>
                     <p>Utilisation de la directive <code>ng-click</code></p>
                     <pre><code class="html" contenteditable>
@@ -245,11 +307,21 @@ function myController($scope){
                     <section>
                         <h2>Hiérarchie des <code>$scope</code></h2>
                         <ul>
-                            <li class="fragment">Une application contient un seul scope global appelé <code>$rootScope</code></li>
-                            <li class="fragment">mais plusieurs <code>$scope</code> enfants</li>
+                            <li class="fragment">Un seul scope global appelé <code>$rootScope</code></li>
+                            <li class="fragment">Plusieurs <code>$scope</code> enfants</li>
                             <li class="fragment">Un scope créé est toujours enfant d'un scope parent ...</li>
                             <li class="fragment">... et hérite des propriétés de ce dernier</li>
                         </ul>
+                    </section>
+
+                    <section>
+                        <img style="height:450px" src="img/scope0.png" alt=""/>
+                        <img src="img/scope4.png" alt=""/>
+                    </section>
+
+                    <section>
+                        <img style="height:450px" src="img/scope1.jpg" alt=""/>
+                        <img src="img/scope2.png" alt=""/>
                     </section>
 
                     <section>
@@ -278,7 +350,7 @@ $scope.$on('yetAnotherEvent', function(event, param1, param2, ...){
                     <section>
                         <h2>XHR & Injection de dépendances</h2>
                         <p>Pour effectuer des appels XHR, angular dispose du service <code>$http</code> ...</p>
-                        <p>... injectable au même titre que le service <code>$scope</code></p>
+                        <p>... injectable comme le <code>$scope</code></p>
                         <pre><code class="javascript" contenteditable>
 function myController($scope, $http){
 
@@ -326,8 +398,8 @@ $http.get(url, options)
                         <h2>Navigation côté client</h2>
                     </section>
                     <section>
-                        <h2>Service <code>$routeProvider</code></h2>
-                        <p>Permet de configurer le template HTML à charger avec son contrôleur associé pour une URL donné</p>
+                        <h2><code>$routeProvider</code></h2>
+                        <p>Une URL pour un état de l'application (template HTML, controller)</p>
                     <pre><code class="javascript" contenteditable>
 $routeProvider
     .when('/route1', {
@@ -363,7 +435,6 @@ $routeProvider
                     </ul>
                 </section>
 
-
                 <section>
                     <section>
                         <h2>Top feature n°4 : Services & Injection de dépendances</h2>
@@ -387,13 +458,6 @@ function myController($scope, MonService){
                         </code></pre>
                     </section>
 
-                    <section>
-                        <h2>Avantages</h2>
-                        <ul>
-                            <li>Modularisation, encapsulation</li>
-                            <li>Meilleur testabilité</li>
-                        </ul>
-                    </section>
                 </section>
 
                 <section>
@@ -465,7 +529,7 @@ angularMovieApp.filter('greet', function () {
                             <li>ng-repeat</li>
                             <li>ng-click</li>
                             <li>ng-show</li>
-                            <li class='fragment'>ng-switch</li>
+                            <li class='fragment grow'>ng-switch</li>
                         </ul>
                     </section>
 
@@ -477,7 +541,7 @@ angularMovieApp.filter('greet', function () {
                         <h2>Créer ses propres directives</h2>
                         <ul>
                             <li>Scope</li>
-                            <li>Link</li>
+                            <li>Linking function</li>
                             <li>Compile</li>
                             <li>Restriction</li>
                             <li>Transclusion</li>
@@ -559,7 +623,6 @@ angularMovieApp.filter('greet', function () {
                             <li class="fragment">Framework qui promeut les tests unitaires</li>
                             <li class="fragment">API bien documentée pour certains aspects</li>
                             <li class="fragment"><a href="http://docs.angularjs.org/tutorial">Excellent tutorial pour débuter</a></li>
-                            <li class="fragment">Ticket d'entrée pas cher</li>
                         </ul>
                     </section>
 
@@ -581,7 +644,7 @@ angularMovieApp.filter('greet', function () {
                         <h2>Difficultés</h2>
                         <ul>
                             <li class="fragment">Le data-binding bi-directionnel ne fonctionne pas hors du "monde" AngularJS. Il faut utiliser
-                                <code>$scope.$watch()</code> et <code>$scope.$apply()</code> pour surveiller et mettre à jour manuellement une valeur
+                               <code>$scope.$apply()</code> notifier angularJS qu'une valeur a été mise à jour
                             </li>
                             <li class="fragment">Intégration librairies UI jQuery pouvant être problématique</li>
                             <ul class="fragment">
@@ -608,6 +671,8 @@ angularMovieApp.filter('greet', function () {
 
 		</div>
 
+        <script type="text/javascript" src="js/angular.min.js"></script>
+        <script type="text/javascript" src="js/app.js"></script>
 		<script src="lib/js/head.min.js"></script>
 		<script src="js/reveal.min.js"></script>
 
