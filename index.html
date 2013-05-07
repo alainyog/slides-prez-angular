@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 	<head>
 		<meta charset="utf-8">
@@ -82,19 +82,10 @@
                         <h2>Framework Javascript</h2>
                         <ul>
                             <li>Séparation des couches (MV*)</li>
+                            <li>Meilleure organisation du code Javascript</li>
                             <li>Navigation coté client</li>
                             <li>Templating</li>
-                            <li>Meilleure organisation du code Javascript</li>
-                        </ul>
-                    </section>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>Déroulement</h2>
-                        <ul>
-                            <li>Parcourir les fonctionnalités clés d'AngularJS</li>
-                            <li>Live coding d'une librairie de films en ligne</li>
+                            <li>Interaction avec le Back End</li>
                         </ul>
                     </section>
                 </section>
@@ -107,23 +98,37 @@
                     <small class="pull-right">Misko Hevery, créateur d'AngularJS</small>
                 </section>
 
+                <section>
+                    <section>
+                        <h1>Déroulement</h1>
+                        <p>Live coding d'une vidéothèque avec AngularJS en 9 étapes</p>
+                    </section>
+                    <section>
+                        <h2>Simple page HTML statique</h2>
+                        <img src="img/from.jpg" alt="Simple page HTML statique"/>
+                    </section>
+                    <section>
+                        <h2>Application Web Moderne</h2>
+                        <img src="img/to.jpg" alt="Application Web Moderne"/>
+                    </section>
+                </section>
 
                 <section>
                     <section>
                         <h2>Hello World HTML</h2>
-                        <pre><code class="html" contenteditable>
-                         &lt;p&gt;Hello World&lt;/p&gt;
+                        <pre><code class="html">
+                            &lt;p&gt;Bonjour le monde&lt;/p&gt;
                         </code></pre>
                     </section>
 
                     <section>
+                        <p>Bonjour <span id="jsDiv"></span></p>
                         <p><input style="height:35px; font-size:20px" id="jsInput" type="text"/></p>
-                        <p><div id="jsDiv"></div></p>
 
                         <script type="text/javascript">
                             var div = document.getElementById('jsDiv');
                             var input = document.getElementById('jsInput');
-                            var txt = 'Hello World';
+                            var txt = 'le monde';
 
                             input.value = txt;
                             if (div.textContent || div.textContent === "") {
@@ -144,30 +149,30 @@
 
                     <section>
                         <h2>Hello World avec Javascript</h2>
-                        <pre><code class="html" contenteditable>
+                        <pre><code class="html">
 &lt;html&gt;
+    Bonjour &lt;span id="name"&gt;&lt;/span&gt;
     &lt;input type="text"/&gt;
-    &lt;div id="myDiv"&gt;&lt;/div&gt;
 &lt;/html&gt;
                         </code></pre>
                         <pre><code class="javascript">
 window.onload = function(){
-    var div = document.getElementById('myDiv');
+    var span = document.getElementById('name');
     var input = document.getElementsByTagName('input')[0];
-    var txt = 'Hello World';
+    var txt = 'le monde';
 
     input.value = txt;
-    if (div.textContent || div.textContent === "") {
-        div.textContent = txt;
-    } else if(div.innerText || div.innerText === "") { // IE
-        div.innerText = txt;
+    if (span.textContent || span.textContent === "") {
+        span.textContent = txt;
+    } else if(span.innerText || span.innerText === "") { // IE
+        span.innerText = txt;
     }
 
     input.onkeyup = function(){
-        if (div.textContent || div.textContent === "") {
-            div.textContent = input.value;
-        } else if(div.innerText || div.innerText === "") { // IE
-            div.innerText = input.value;
+        if (span.textContent || span.textContent === "") {
+            span.textContent = input.value;
+        } else if(span.innerText || span.innerText === "") { // IE
+            span.innerText = input.value;
         }
     };
 };
@@ -177,133 +182,100 @@ window.onload = function(){
 
                     <section>
                         <h2>Hello World avec jQuery</h2>
-                        <pre><code class="html" contenteditable>
+                        <pre><code class="html">
 &lt;html&gt;
+    Bonjour &lt;span id="name"&gt;&lt;/span&gt;
     &lt;input type="text"/&gt;
-    &lt;div id="myDiv"&gt;&lt;/div&gt;
 &lt;/html&gt;
                         </code></pre>
-                        <pre><code class="javascript" contenteditable>
+                        <pre><code class="javascript">
 $(document).ready(function() {
-    var txt = 'Hello World';
+    var txt = 'le monde';
     var $input = $('input');
-    var $div = $('#myDiv');
+    var $span = $('#name');
     $input.val(txt);
-    $div.text(txt);
+    $span.text(txt);
     $input.keyup(function (event) {
-        $div.text(event.target.value);
+        $span.text(event.target.value);
     });
 });
                         </code></pre>
+                        <p>Bonjour <span id="name"></span></p>
                         <p><input style="height:35px; font-size:20px" id="jQueryInput" type="text"/></p>
-                        <p><div id="myDiv"></div></p>
                         <script type="text/javascript">
-                            var txt = 'Hello World';
+                            var txt = 'le monde';
                             var $input = $('#jQueryInput');
-                            var $div = $('#myDiv');
+                            var $name = $('#name');
                             $input.val(txt);
-                            $div.text(txt);
+                            $name.text(txt);
                             $input.keyup(function (event) {
-                                $div.text(event.target.value);
+                                $name.text(event.target.value);
                             });
                         </script>
                     </section>
 
                     <section>
-                        <h2>Hello World AngularJS</h2>
-                        <pre><code class="html" contenteditable>
-&lt;html ng-app ng-controller="myController"&gt;
-    &lt;input ng-model="greeting"/&gt;
-    &lt;div &gt;{{greeting}}&lt;/div&gt;
-&lt;/html&gt;
-                        </code></pre>
-                        <pre><code class="javascript" contenteditable>
-function myController($scope){
-    $scope.greeting = 'Hello World';
-}
-                        </code></pre>
-                        <div ng-app="angularRevealApp" ng-controller="greetingController">
-                            <p>
-                                <input style="height:35px; font-size:20px" type="text" ng-model="greeting">
-                            </p>
-                            <p>{{greeting}}</p>
-                        </div>
+                        <h2>Hello World AngularJS ?</h2>
+                        <p class="fragment"><a href="http://localhost:3001" target=_new>Démo</a></p>
                     </section>
-                </section>
 
-                <section>
-                    <h3>Top feature n°1 : Data-binding bi-directionnel</h3>
-                    <pre><code class="html" contenteditable>
-&lt;html ng-app&gt;
-    &lt;div ng-controller="myController"&gt;{{greeting}}&lt;/div&gt;
+                    <section>
+                        <p>View</p>
+                        <pre><code class="html">
+&lt;html ng-app ng-controller="homeController"&gt;
+    &lt;div&gt;Bonjour {{name}}&lt;/div&gt;
+    &lt;input ng-model="name"/&gt;
 &lt;/html&gt;
-                    </code></pre>
-                    <pre><code class="javascript" contenteditable>
-function myController($scope){
-    $scope.greeting = 'Hello World';
+                        </code></pre>
+                        <div class="fragment">
+                            <p>Scope</p>
+                            <pre><code class="javascript">
+{
+    name = "le monde"
 }
-                    </code></pre>
-                    <p class="fragment"><code>$scope</code> est la seule source de vérité</p>
-                    <p class="fragment">La vue et le modèle sont synchronisés</p>
-                    <p class="fragment">Elimination de 60 à 80% du code de manipulation du DOM</p>
-                </section>
+                            </code></pre>
+                        </div>
+                        <p>Controller</p>
+                        <pre><code class="javascript">
+function homeController($scope){
+    $scope.name = 'le monde';
+}
+                        </code></pre>
+                    </section>
 
-                <section>
-                    <h3>Top feature n°2 : Template</h3>
-                    <pre><code class="html" contenteditable>
-&lt;html ng-app&gt;
-    &lt;div ng-controller="myController"&gt;{{greeting}}&lt;/div&gt;
+
+
+                    <section>
+                        <pre><code class="html">
+&lt;html ng-app ng-controller="homeController"&gt;
+    &lt;div&gt;Bonjour {{name}}&lt;/div&gt;
+    &lt;input ng-model="name"/&gt;
+    &lt;div&gt;Bienvenue sur {{application.name}} v.{{version}}&lt;/div&gt;
+    &lt;button ng-click="start()"&gt;Démarrer&lt;/button&gt;
 &lt;/html&gt;
-                    </code></pre>
-                    <pre><code class="javascript" contenteditable>
-function myController($scope){
-    $scope.greeting = 'Hello World';
+                        </code></pre>
+                        <pre><code class="javascript">
+{
+    name = "le monde"
+    application = {
+        name : "AngularMovie",
+        version : "1.0.0"
+    }
+    start : function
 }
-                    </code></pre>
-                    <p class="fragment">Pas de manipulation de string, ni de innerHTML</p>
-                    <p class="fragment">Transformation du DOM grâce au compilateur AngularJS</p>
-                    <p class="fragment">Extension de HTML via les directives</p>
-                </section>
-
-                <section>
-                    <h3>Top feature n°3 : MVC</h3>
-                    <pre><code class="html" contenteditable>
-&lt;html ng-app&gt;
-    &lt;div ng-controller="myController"&gt;{{greeting}}&lt;/div&gt;
-&lt;/html&gt;
-                    </code></pre>
-                    <pre><code class="javascript" contenteditable>
-function myController($scope){
-    $scope.greeting = 'Hello World';
+                        </code></pre>
+                        <pre><code class="javascript">
+function homeController($scope){
+    $scope.name = 'le monde';
+    $scope.application = {
+        name : "AngularMovie",
+        version : "1.0.0"
+    }
+    $scope.start = function(){};
 }
-                    </code></pre>
-                    <p class="fragment">modèle = simple object javascript</p>
-                    <p class="fragment">vue = HTML</p>
-                    <p class="fragment">contrôleur = simple fonction javascript</p>
-                </section>
+                        </code></pre>
+                    </section>
 
-                <section>
-                    <h2>Gestion des évènements de clic</h2>
-                    <p>Utilisation de la directive <code>ng-click</code></p>
-                    <pre><code class="html" contenteditable>
-&lt;div ng-controller="myController"&gt;
-    &lt;button ng-click="callAction()"&gt;&lt;/button&gt;
-&lt;/div&gt;
-                    </code></pre>
-                    <pre><code class="javascript" contenteditable>
-function myController($scope){
-    $scope.callAction = function(){
-        /* do something */
-    };
-}
-                    </code></pre>
-                </section>
-
-                <section>
-                    <h1>DEMO</h1>
-                </section>
-
-                <section>
                     <section>
                         <h2>Hiérarchie des <code>$scope</code></h2>
                         <ul>
@@ -324,34 +296,119 @@ function myController($scope){
                         <img src="img/scope2.png" alt=""/>
                     </section>
 
-                    <section>
-                        <h1>DEMO</h1>
-                    </section>
-
-                    <section>
-                        <h2>Propagation des évènements <code>$scope</code></h2>
-                        <p class="fragment">Un évènement peut être "diffusé" aux <code>$scope</code> enfants ...</p>
-                        <pre class="fragment"><code class="javascript" contenteditable>
-$scope.$broadcast('myEvent', param1, param2, ...);
-                        </code></pre>
-                        <p class="fragment">... ou "émis" aux <code>$scope</code> parents</p>
-                        <pre class="fragment"><code class="javascript" contenteditable>
-$scope.$emit('anotherEvent', param1, param2, ...);
-                        </code></pre>
-                        <pre class="fragment"><code class="javascript" contenteditable>
-$scope.$on('yetAnotherEvent', function(event, param1, param2, ...){
-      console.log(param1);
-});
-                        </code></pre>
-                    </section>
                 </section>
 
                 <section>
                     <section>
-                        <h2>XHR & Injection de dépendances</h2>
-                        <p>Pour effectuer des appels XHR, angular dispose du service <code>$http</code> ...</p>
-                        <p>... injectable comme le <code>$scope</code></p>
-                        <pre><code class="javascript" contenteditable>
+                        <h2>MVC</h2>
+                        <pre><code class="html">
+&lt;html ng-app ng-controller="homeController"&gt;
+    &lt;div&gt;Bonjour {{name}}&lt;/div&gt;
+    &lt;input ng-model="name"/&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <pre><code class="javascript">
+function homeController($scope){
+    $scope.name = 'le monde';
+}
+                        </code></pre>
+                        <p class="fragment">modèle = simple object javascript</p>
+                        <p class="fragment">vue = HTML</p>
+                        <p class="fragment">contrôleur = simple fonction javascript</p>
+                    </section>
+
+                    <section>
+                        <h2>Data-binding bi-directionnel</h2>
+                        <pre><code class="html">
+&lt;html ng-app ng-controller="homeController"&gt;
+    &lt;div&gt;Bonjour {{name}}&lt;/div&gt;
+    &lt;input ng-model="name"/&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <pre><code class="javascript">
+function homeController($scope){
+    $scope.name = 'le monde';
+}
+                        </code></pre>
+                        <p class="fragment"><code>$scope</code> est la seule source de vérité</p>
+                        <p class="fragment">La vue et le modèle sont synchronisés</p>
+                        <p class="fragment">Elimination de 60 à 80% du code de manipulation du DOM</p>
+                    </section>
+
+                    <section>
+                        <h2>Template</h2>
+                        <pre><code class="html">
+&lt;html ng-app ng-controller="homeController"&gt;
+    &lt;div&gt;Bonjour {{name}}&lt;/div&gt;
+    &lt;input ng-model="name"/&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <pre><code class="javascript">
+function homeController($scope){
+    $scope.name = 'le monde';
+}
+                        </code></pre>
+                        <p class="fragment">C'est directement du HTML valide</p>
+                        <p class="fragment">Pas de manipulation de string, ni de innerHTML</p>
+                        <p class="fragment">Pas besoin de moteur de templating tierce</p>
+                        <p class="fragment">Extension de HTML via les directives</p>
+                    </section>
+
+                    <section>
+                        <h2>ETAPE 1/9 : Fini la liste de films statique</h2>
+                    </section>
+
+                    <section>
+                        <h1>DEMO</h1>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h2>ETAPE 2/9 : Je veux ajouter un film</h2>
+                    </section>
+
+                    <section>
+                        <h2>Gestion des évènements de clic</h2>
+                        <p>Utilisation de l'attribut <code>ng-click</code></p>
+                        <pre><code class="html">
+&lt;html ng-app ng-controller="homeController"&gt;
+    &lt;div&gt;Bonjour {{name}}&lt;/div&gt;
+    &lt;button ng-click="start()"&gt;Démarrer&lt;/button&gt;
+&lt;/html&gt;
+                        </code></pre>
+                        <pre><code class="javascript">
+{
+    name = "le monde"
+    start : function
+}
+                        </code></pre>
+                        <pre><code class="javascript">
+function homeController($scope){
+    $scope.name = 'le monde';
+    $scope.start = function(){};
+}
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h1>DEMO</h1>
+                    </section>
+
+                </section>
+
+                <section>
+                    <section>
+                        <h3>ETAPE 3/9 : Récupérer mes films d'un serveur Back End</h3>
+                    </section>
+
+                    <section>
+                        <h2>$http</h2>
+                        <p class="fragment">Disponible dans AngularJS</p>
+                        <p class="fragment">Pas de jQuery Ajax</p>
+                        <p class="fragment">Service injectable</p>
+                        <pre class="fragment"><code class="javascript">
 function myController($scope, $http){
 
 };
@@ -360,47 +417,67 @@ function myController($scope, $http){
 
                     <section>
                         <p>Usages</p>
-                        <pre><code class="javascript" contenteditable>
-$http.get(url, options)
+                        <pre><code class="javascript">
+    $http.get(url, options)
                         </code></pre>
-                        <pre><code class="javascript" contenteditable>
-$http.post(url, data, options)
+                        <pre><code class="javascript" >
+    $http.post(url, data, options)
                         </code></pre>
-                        <pre><code class="javascript" contenteditable>
-$http.put(url, data, options)
+                        <pre><code class="javascript">
+    $http.put(url, data, options)
                         </code></pre>
-                        <pre><code class="javascript" contenteditable>
-$http.delete(url, options)
+                        <pre><code class="javascript">
+    $http.delete(url, options)
                         </code></pre>
                     </section>
-
 
                     <section>
                         <p>Callbacks</p>
-                        <pre><code class="javascript" contenteditable>
+                        <pre><code class="javascript">
 $http.get(url, options)
-.success(function(data, status, headers, config){
-    /* do something */
-})
-.error(function(data, status, headers, config){
-    /* handle error */
+    .success(function(data, status, headers, config){
+        /* do something */
+    })
+    .error(function(data, status, headers, config){
+        /* handle error */
+    });
+                            </code></pre>
+                    </section>
+
+                    <section>
+                        <h1>DEMO</h1>
+                    </section>
+
+                    <section>
+                        <h2>Services & Injection de dépendances</h2>
+                        <p class="fragment">Singleton qui fournit des tâches spécifiques à l'application</p>
+                        <p class="fragment">Exemple : $scope, $http</p>
+                    </section>
+
+                    <section>
+                        <h2>Créer ses propres services</h2>
+                        <pre><code class="javascript">
+myModuleApp.service("MonService", function ($http, dep1, dep2, ...) {
+    /* utilisation de $http */
 });
+                        </code></pre>
+
+                        <pre class="fragment"><code class="javascript">
+function myController($scope, MonService){
+    MonService.faireUnTruc();
+};
                         </code></pre>
                     </section>
                 </section>
 
                 <section>
-                    <h1>DEMO</h1>
-                </section>
-
-                <section>
                     <section>
-                        <h2>Navigation côté client</h2>
+                        <h2>Etape 4/9 : Navigation côté client</h2>
                     </section>
                     <section>
                         <h2><code>$routeProvider</code></h2>
                         <p>Une URL pour un état de l'application (template HTML, controller)</p>
-                    <pre><code class="javascript" contenteditable>
+                    <pre><code class="javascript">
 $routeProvider
     .when('/route1', {
         templateUrl: 'path/to/view1.html',
@@ -437,44 +514,15 @@ $routeProvider
 
                 <section>
                     <section>
-                        <h2>Top feature n°4 : Services & Injection de dépendances</h2>
-                        <p class="fragment">Singleton qui fournit des tâches spécifiques à l'application</p>
-                        <p class="fragment">Exemple : $scope, $http</p>
-
-                    </section>
-
-                    <section>
-                        <h2>Créer ses propres services</h2>
-                        <pre><code class="javascript" contenteditable>
-myModuleApp.service("MonService", function ($http, dep1, dep2, ...) {
-    /* utilisation de $http */
-});
-                        </code></pre>
-
-                        <pre class="fragment"><code class="javascript" contenteditable>
-function myController($scope, MonService){
-    MonService.faireUnTruc();
-};
-                        </code></pre>
-                    </section>
-
-                </section>
-
-                <section>
-                    <h1>DEMO</h1>
-                </section>
-
-                <section>
-                    <section>
-                        <h2>Top feature n° 5 : Filtres AngularJS</h2>
+                        <h2>Filtres AngularJS</h2>
                         <p>Formate les données avant de les afficher</p>
                     </section>
                     <section>
                         <h2>Exemples</h2>
-                        <pre><code class="javascript" contenteditable>
+                        <pre><code class="javascript">
 $scope.amount = 1234.56;
                         </code></pre>
-                        <pre><code class="html" contenteditable>
+                        <pre><code class="html">
 &lt;div&gt;{{amount | currency}}&lt;/div&gt;        &lt;!-- $1,234.56 --&gt;
 &lt;div&gt;{{amount | currency:"USD$"}}&lt;/div&gt; &lt;!-- USD$1,234.56 --&gt;
                         </code></pre>
@@ -492,22 +540,31 @@ $scope.amount = 1234.56;
                     </section>
 
                     <section>
+                        <h2>Etape 5/9 : Rechercher un film</h2>
+                        <h2>Etape 6/9 : Trier la liste des films</h2>
+                    </section>
+
+                    <section>
                         <h1>DEMO</h1>
                     </section>
 
                     <section>
                         <h2>Créer ses propres filtres</h2>
-                        <pre><code class="javascript" contenteditable>
+                        <pre><code class="javascript">
 angularMovieApp.filter('greet', function () {
     return function(inputValue, arg1, arg2, ....) {
          return 'Hello ' + inputvalue;
     };
 });
                         </code></pre>
-                        <pre><code class="html" contenteditable>
+                        <pre><code class="html">
 &lt;div&gt;{{name || greet}}&lt;/div&gt;
 &lt;div&gt;{{name || greet:arg1:arg2}}&lt;/div&gt;
                         </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Etape 7/9 : Je veux de vraies étoiles</h2>
                     </section>
 
                     <section>
@@ -517,7 +574,7 @@ angularMovieApp.filter('greet', function () {
 
                 <section>
                     <section>
-                        <h2>Top feature n°6 : Directives</h2>
+                        <h2>Directives</h2>
                         <p>Etendre le langage HTML</p>
                         <p>Créer des composants réutilisables</p>
                     </section>
@@ -534,7 +591,80 @@ angularMovieApp.filter('greet', function () {
                     </section>
 
                     <section>
+                        <h2>Etape 8/9 : Switcher vers une vue plus compacte</h2>
+                    </section>
+
+                    <section>
                         <h1>DEMO</h1>
+                    </section>
+
+                    <section>
+                        <h2>Plusieurs types d'invocations possibles</h2>
+                        <pre><code class="html">
+                            &lt;div navbar &gt;&lt;/div&gt;
+                        </code></pre>
+                         <pre><code class="html">
+                            &lt;navbar&gt;&lt;/navbar&gt;
+                         </code></pre>
+                         <pre><code class="html">
+                            &lt;div class="navbar" &gt;&lt;/div&gt;
+                         </code></pre>
+                         <pre><code class="html">
+                            &lt;!-- directive : navbar --&gt;
+                         </code></pre>
+                    </section>
+
+                    <section>
+                        <img src="img/tabs.png" height="300px" alt="Tabs"/>
+                        <pre class="fragment" ><code class="html">
+                        &lt;ul class="nav-tabs"&gt;
+                            &lt;li class="active"&gt;
+                                &lt;a href="#"&gt;Primary tab&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;a href="#"&gt;Primary tab&lt;/a&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;
+                                &lt;a href="#"&gt;Primary tab&lt;/a&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <img src="img/tabs.png" height="300px" alt="Tabs"/>
+                        <pre><code class="html">
+                     &lt;tabs&gt;
+                         &lt;pane title="Primary tab" active&gt;
+                             &lt;!-- contenu --&gt;
+                         &lt;/pane&gt;
+                         &lt;pane title="Secondary tab"&gt;
+                             &lt;!-- contenu --&gt;
+                         &lt;/pane&gt;
+                         &lt;pane title="some other tab"&gt;
+                             &lt;!-- contenu --&gt;
+                         &lt;/pane&gt;
+                     &lt;/tabs&gt;
+                    </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>Libérez votre imagination</h2>
+                        <pre><code class="html">
+                            &lt;calendar&gt;&lt;/calendar&gt;
+                        </code></pre>
+                        <pre><code class="html">
+                            &lt;progress-bar&gt;&lt;/progress-bar&gt;
+                        </code></pre>
+                        <pre><code class="html">
+                            &lt;dialog&gt;&lt;/dialog&gt;
+                        </code></pre>
+                        <pre><code class="html">
+                           &lt;datepicker&gt;&lt;/datepicker&gt;
+                        </code></pre>
+                        <pre><code class="html">
+                           &lt;accordion&gt;&lt;/accordion&gt;
+                        </code></pre>
                     </section>
 
                     <section>
@@ -550,6 +680,10 @@ angularMovieApp.filter('greet', function () {
 
                     <section>
                         <img src="img/wtf.gif" height="400px" alt="WTF !!!"/>
+                    </section>
+
+                    <section>
+                        <h2>Etape 9/9 : Créer votre propre directive</h2>
                     </section>
 
                     <section>
@@ -644,7 +778,7 @@ angularMovieApp.filter('greet', function () {
                         <h2>Difficultés</h2>
                         <ul>
                             <li class="fragment">Le data-binding bi-directionnel ne fonctionne pas hors du "monde" AngularJS. Il faut utiliser
-                               <code>$scope.$apply()</code> notifier angularJS qu'une valeur a été mise à jour
+                               <code>$scope.$apply()</code> pour notifier angularJS qu'une valeur a été mise à jour
                             </li>
                             <li class="fragment">Intégration librairies UI jQuery pouvant être problématique</li>
                             <ul class="fragment">
