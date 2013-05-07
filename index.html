@@ -296,28 +296,6 @@ function homeController($scope){
                         <img src="img/scope2.png" alt=""/>
                     </section>
 
-                    <section>
-                        <h1>DEMO</h1>
-                    </section>
-
-                    <section>
-                        <h2>Propagation des évènements <code>$scope</code></h2>
-                        <p class="fragment">Un évènement peut être "diffusé" aux <code>$scope</code> enfants ...</p>
-                        <pre class="fragment"><code class="javascript">
-$scope.$broadcast('myEvent', param1, param2, ...);
-                        </code></pre>
-                        <p class="fragment">... ou "émis" aux <code>$scope</code> parents</p>
-                        <pre class="fragment"><code class="javascript">
-$scope.$emit('anotherEvent', param1, param2, ...);
-                        </code></pre>
-                        <pre class="fragment"><code class="javascript">
-$scope.$on('yetAnotherEvent', function(event, param1, param2, ...){
-    console.log(param1);
-});
-                        </code></pre>
-                    </section>
-
-
                 </section>
 
                 <section>
