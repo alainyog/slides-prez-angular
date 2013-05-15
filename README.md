@@ -13,4 +13,5 @@ Un live coding d'une application de bibliothèque de films en ligne accompagne c
 ## Historique des présentations
 * 15/02/2013 - BOF de SFEIR
 * 18/04/2013 - Google Developer Group Paris
+* 06/08/2013 - BreizhJUG
 
