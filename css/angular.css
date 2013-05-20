@@ -16,3 +16,7 @@
     box-shadow : none;
     border : none;
 }
+
+.black-back {
+    background-color : black;
+}

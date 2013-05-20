@@ -41,18 +41,18 @@
             <div class="slides">
 
             <section>
-                <section>
+                <section data-state="leavesfeir">
                     <img src="img/angularjs.png" height="300px" alt="AngularJS">
                     <h3>Transcendez vos développements Web avec AngularJS</h3>
                     <p>
                         <small>presenté par <a href="http://gplus.to/lauthierry">LAU Thierry</a> / <a href="https://twitter.com/laut3rry">@laut3rry</a></small>
                     </p>
                 </section>
-                <section>
-                    <h2>Développeur Front End chez <span class="orange">[</span>sf<span class="orange">Ξ</span>ir<span class="orange">]</span></h2>
-                    <a href="http://www.sfeir.com"><img src="img/sfeir.png" alt=""></a>
+                <section data-state="entersfeir">
+                    <a href="http://www.sfeir.com"><img src="img/logoNoir_SFEIR.png" alt="SFEIR"></a>
+                    <p>front-end developer</p>
                 </section>
-                <section>
+                <section data-state="leavesfeir">
                     <h2>Anime la page HTML5 * CSS3 - ʕ๏๏ʔ</h2>
                     <figure>
                         <a href="https://plus.google.com/101291710590780094468/posts"><img src="img/page_google_plus.png" alt=""></a>
@@ -248,7 +248,7 @@ $(document).ready(function() {
                     <img src="img/databinding2.jpg" width="700px" alt=""/>
                 </section>
                 <section>
-                    <h1>DEMO</h1>
+                    <h1>{ DEMO }</h1>
                 </section>
                 <section>
                     <img style="height:450px" src="img/scope0.png" alt=""/>
@@ -314,7 +314,7 @@ function myController($scope, $http){
                 </section>
 
                 <section>
-                   <h1>DEMO</h1>
+                   <h1>{ DEMO }</h1>
                 </section>
 
             </section>
@@ -356,7 +356,7 @@ $routeProvider
                 </section>
 
                 <section>
-                    <h1>DEMO</h1>
+                    <h1>{ DEMO }</h1>
                 </section>
             </section>
 
@@ -399,17 +399,21 @@ $routeProvider
 
                 <section>
                     <h2>Créer ses propres services</h2>
-                            <pre><code class="javascript">
+                    <pre><code class="javascript">
 myModuleApp.service("MonService", function ($http, dep1, dep2, ...) {
     /* utilisation de $http */
 });
-                            </code></pre>
+                    </code></pre>
 
-                            <pre class="fragment"><code class="javascript">
+                    <pre class="fragment"><code class="javascript">
 function myController($scope, MonService){
     MonService.faireUnTruc();
 };
-                            </code></pre>
+                    </code></pre>
+                </section>
+                
+                <section>
+                    <h1>{ DEMO }</h1>
                 </section>
             </section>
 
@@ -476,7 +480,7 @@ $scope.amount = 1234.56;
                 </section>
 
                 <section>
-                    <h1>DEMO</h1>
+                    <h1>{ DEMO }</h1>
                 </section>
 
                 <section>
@@ -495,7 +499,7 @@ myModuleApp.filter('greet', function () {
                 </section>
 
                 <section>
-                    <h1>DEMO</h1>
+                    <h1>{ DEMO }</h1>
                 </section>
             </section>
 
@@ -521,7 +525,7 @@ myModuleApp.filter('greet', function () {
                 </section>
 
                 <section>
-                    <h1>DEMO</h1>
+                    <h1>{ DEMO }</h1>
                 </section>
 
                 <section>
@@ -757,6 +761,16 @@ myModuleApp.filter('greet', function () {
 			});
 
 		</script>
+
+        <script type="text/javascript">
+            Reveal.addEventListener( 'entersfeir', function() {
+              $('.reveal').addClass('black-back');
+            }, false );
+
+            Reveal.addEventListener( 'leavesfeir', function() {
+                $('.reveal').removeClass('black-back');
+            }, false );
+        </script>
 
 	</body>
 </html>
