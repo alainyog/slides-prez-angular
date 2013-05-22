@@ -75,7 +75,7 @@
                 <section>
                     <h2>Framework Javascript</h2>
                     <h3>par Google</h3>
-                    <p>pour développer des applications Web Modernes</p>
+                    <p>pour développer des applications Web <p class="fragment grow">modernes</p></p>
                 </section>
 
                 <section>
@@ -206,7 +206,6 @@ $(document).ready(function() {
                 <section>
                     <p>Don't Repeat Yourself</p>
                     <p>Structure</p>
-                    <p>Testability</p>
                 </section>
 
                 <section>
@@ -483,20 +482,74 @@ $scope.amount = 1234.56;
                     <h1>{ DEMO }</h1>
                 </section>
 
-                <section>
-                    <h2>Créer ses propres filtres</h2>
-                    <pre><code class="javascript">
-myModuleApp.filter('greet', function () {
-    return function(inputValue, arg1, arg2, ....) {
-        return 'Hello ' + inputvalue;
-    };
-});
-                    </code></pre>
-                    <pre><code class="html">
-&lt;div&gt;{{name | greet}}&lt;/div&gt;
-&lt;div&gt;{{name | greet:arg1:arg2}}&lt;/div&gt;
-                    </code></pre>
-                </section>
+                    <section>
+                        <h2>Créer vos propres filtres</h2>
+                    </section>
+                    <section data-transition="fade">
+                        <pre><code class="html">
+&lt;html ng-app="myModule"&gt;
+    &lt;div&gt;{{name | greet}}&lt;/div&gt;             &lt;!-- Yo Thierry --&gt;
+&lt;/html&gt;
+                        </code></pre>
+
+                        <pre class="fragment"><code class="javascript">
+myModuleApp.filter('greet', function (dep1, dep2, ...) {
+
+
+
+
+
+
+
+
+
+    });
+                        </code></pre>
+                    </section>
+
+                    <section data-transition="none">
+                        <pre><code class="html">
+&lt;html ng-app="myModule"&gt;
+    &lt;div&gt;{{name | greet}}&lt;/div&gt;             &lt;!-- Yo Thierry --&gt;
+&lt;/html&gt;
+                        </code></pre>
+
+                        <pre><code class="javascript">
+myModuleApp.filter('greet', function (dep1, dep2, ...) {
+
+        return function(value) {
+
+
+
+            return 'Yo ' + value;
+
+        };
+
+    });
+                        </code></pre>
+                    </section>
+
+                    <section data-transition="none">
+                        <pre><code class="html">
+&lt;html ng-app="myModule"&gt;
+    &lt;div&gt;{{name | greet:true}}&lt;/div&gt;   &lt;!-- Bonjour Thierry --&gt;
+&lt;/html&gt;
+                        </code></pre>
+
+                        <pre><code class="javascript">
+myModuleApp.filter('greet', function (dep1, dep2, ...) {
+
+        return function(value, isPolite) {
+            if(isPolite){
+                return 'Bonjour ' + value;
+            } else {
+                return 'Yo ' + value;
+            }
+        };
+
+    });
+                        </code></pre>
+                    </section>
 
                 <section>
                     <h1>{ DEMO }</h1>
@@ -547,34 +600,34 @@ myModuleApp.filter('greet', function () {
                 <section>
                     <img src="img/tabs.png" height="300px" alt="Tabs"/>
                     <pre class="fragment" ><code class="html">
-&lt;ul class="nav-tabs"&gt;
-    &lt;li class="active"&gt;
-        &lt;a href="#"&gt;Primary tab&lt;/a&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;a href="#"&gt;Primary tab&lt;/a&gt;
-    &lt;/li&gt;
-    &lt;li&gt;
-        &lt;a href="#"&gt;Primary tab&lt;/a&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;
+                &lt;ul class="nav-tabs"&gt;
+                    &lt;li class="active"&gt;
+                        &lt;a href="#"&gt;Primary tab&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href="#"&gt;Primary tab&lt;/a&gt;
+                    &lt;/li&gt;
+                    &lt;li&gt;
+                        &lt;a href="#"&gt;Primary tab&lt;/a&gt;
+                    &lt;/li&gt;
+                &lt;/ul&gt;
                     </code></pre>
                 </section>
 
                 <section>
                     <img src="img/tabs.png" height="300px" alt="Tabs"/>
                     <pre><code class="html">
-&lt;tabs&gt;
-    &lt;pane title="Primary tab" active&gt;
-        &lt;!-- contenu --&gt;
-    &lt;/pane&gt;
-    &lt;pane title="Secondary tab"&gt;
-        &lt;!-- contenu --&gt;
-    &lt;/pane&gt;
-    &lt;pane title="some other tab"&gt;
-        &lt;!-- contenu --&gt;
-    &lt;/pane&gt;
-&lt;/tabs&gt;
+                &lt;tabs&gt;
+                    &lt;pane title="Primary tab" active&gt;
+                        &lt;!-- contenu --&gt;
+                    &lt;/pane&gt;
+                    &lt;pane title="Secondary tab"&gt;
+                        &lt;!-- contenu --&gt;
+                    &lt;/pane&gt;
+                    &lt;pane title="some other tab"&gt;
+                        &lt;!-- contenu --&gt;
+                    &lt;/pane&gt;
+                &lt;/tabs&gt;
                     </code></pre>
                 </section>
 
@@ -612,6 +665,56 @@ myModuleApp.filter('greet', function () {
                     <img src="img/wtf.gif" height="400px" alt="WTF !!!"/>
                 </section>
 
+                <section>
+                    <p>&lt;demo&gt; &lt;/demo&gt;</p>
+                </section>
+
+            </section>
+
+            <section>
+                <section>
+                    <h2>Pourquoi AngularJS ?</h2>
+                    <ul>
+                        <li class="fragment">Beaucoup moins de code à écrire grâce au data-binding bi-directionnel</li>
+                        <li class="fragment">Modularisation du code avec les modules et les services injectables : Pas de pollution de
+                            l'espace global
+                        </li>
+                        <li class="fragment">AngularJS peut être actif sur une portion de ta page HTML</li>
+                        <li class="fragment">Créer ses propres composants réutilisable grâce aux directives</li>
+                        <li class="fragment">Développement guidée</li>
+                        <li class="fragment">Framework qui promeut les tests unitaires</li>
+                        <li class="fragment">API bien documentée pour certains aspects</li>
+                        <li class="fragment"><a href="http://docs.angularjs.org/tutorial">Excellent tutorial pour débuter</a></li>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Difficultés</h2>
+                    <ul>
+                        <li class="fragment">Documentation officielle pauvre sur certaines notions</li>
+                        <li class="fragment">Ecriture des directives pouvant être compliquée si on ne maîtrise pas son cycle de vie</li>
+                        <ul class="fragment">
+                            <li>Compilation</li>
+                            <li>Link</li>
+                            <li>Transclusion</li>
+                            <li>Restriction</li>
+                        </ul>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Difficultés</h2>
+                    <ul>
+                        <li class="fragment">Le data-binding bi-directionnel ne fonctionne pas hors du "monde" AngularJS. Il faut utiliser
+                            <code>$scope.$apply()</code> pour notifier angularJS qu'une valeur a été mise à jour
+                        </li>
+                        <li class="fragment">Intégration librairies UI jQuery pouvant être problématique</li>
+                        <ul class="fragment">
+                            <li>Je la wrappe dans une directive ?</li>
+                            <li>... ou je crée une directive ?</li>
+                        </ul>
+                    </ul>
+                </section>
             </section>
 
             <section>
@@ -661,52 +764,6 @@ myModuleApp.filter('greet', function () {
                         <li class="fragment"><a href="http://www.itaware.eu/tag/angularjs/">I.T Aware</a> , par Sébastien Letélié</li>
                         <li class="fragment"><a href="http://egghead.io/">egghead.io</a> Plein de vidéos réalisées par John Lindquist</li>
                         <li class="fragment"><a href="https://plus.google.com/communities/109984348857296908402?hl=fr">Communauté Google+ française AngularJS</a></li>
-                    </ul>
-                </section>
-            </section>
-
-            <section>
-                <section>
-                    <h2>Pourquoi AngularJS ?</h2>
-                    <ul>
-                        <li class="fragment">Beaucoup moins de code à écrire grâce au data-binding bi-directionnel</li>
-                        <li class="fragment">Modularisation du code avec les modules et les services injectables : Pas de pollution de
-                            l'espace global
-                        </li>
-                        <li class="fragment">AngularJS peut être actif sur une portion de ta page HTML</li>
-                        <li class="fragment">Créer ses propres composants réutilisable grâce aux directives</li>
-                        <li class="fragment">Développement guidée</li>
-                        <li class="fragment">Framework qui promeut les tests unitaires</li>
-                        <li class="fragment">API bien documentée pour certains aspects</li>
-                        <li class="fragment"><a href="http://docs.angularjs.org/tutorial">Excellent tutorial pour débuter</a></li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Difficultés</h2>
-                    <ul>
-                        <li class="fragment">Documentation officielle pauvre sur certaines notions</li>
-                        <li class="fragment">Ecriture des directives pouvant être compliquée si on ne maîtrise pas son cycle de vie</li>
-                        <ul class="fragment">
-                            <li>Compilation</li>
-                            <li>Link</li>
-                            <li>Transclusion</li>
-                            <li>Restriction</li>
-                        </ul>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Difficultés</h2>
-                    <ul>
-                        <li class="fragment">Le data-binding bi-directionnel ne fonctionne pas hors du "monde" AngularJS. Il faut utiliser
-                            <code>$scope.$apply()</code> pour notifier angularJS qu'une valeur a été mise à jour
-                        </li>
-                        <li class="fragment">Intégration librairies UI jQuery pouvant être problématique</li>
-                        <ul class="fragment">
-                            <li>Je la wrappe dans une directive ?</li>
-                            <li>... ou je crée une directive ?</li>
-                        </ul>
                     </ul>
                 </section>
             </section>
